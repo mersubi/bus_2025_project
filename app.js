@@ -13,6 +13,7 @@ var debug = require('debug')('bus2025:server')
 debug("Проверка работы debug модуля")
 
 // view engine setup
+app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -38,7 +39,8 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
+  res.render('error', { title: 'Bus' });
 });
 
 module.exports = app;
