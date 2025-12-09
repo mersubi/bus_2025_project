@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(require("./middlewares/createMenu.js")); // Посредник подготавливает массив ссылок навигационного меню используя запрос для модели Cat.
-
+app.use(require("./middlewares/createUser.js"))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
