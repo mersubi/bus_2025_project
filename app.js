@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/bus2025');
 var session = require("express-session");
-
+var MongoStore = require("connect-mongo").MongoStore;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var indexBuses = require('./routes/buses');
@@ -32,8 +32,11 @@ app.use(session({
   cookie: { maxAge: 60 * 1000 },
   proxy: true,
   resave: true,
-  saveUninitialized: true
-}))
+  saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: 'mongodb://localhost/bus2025'
+  })
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
