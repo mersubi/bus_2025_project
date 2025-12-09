@@ -42,7 +42,10 @@ app.use(session({
 app.use(function (req, res, next) {
   req.session.counter = req.session.counter + 1 || 1
   next()
-})
+});
+
+app.use(require("./middlewares/createMenu.js")); // Посредник подготавливает массив ссылок навигационного меню используя запрос для модели Cat.
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
