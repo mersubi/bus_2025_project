@@ -54,3 +54,7 @@ header h1 {
   --bs-bg-opacity: 1;
   background-color: #3e3ed5;
 }
+
+.welc {
+  text-align: center;
+}
